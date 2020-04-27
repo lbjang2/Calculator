@@ -1,5 +1,9 @@
 package com.example.calculator;
 
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,12 +16,16 @@ public class MainActivity extends AppCompatActivity {
     Button num0, num1, num2, num3, num4, num5, num6, num7,
             num8, num9, add, subtract, divide, multiply, decimal, clear, equal;
     EditText editor;
-    double value1, value2;
+    private double value1 = Double.NaN;
+    private double value2;
     char Addition = '+';
     char Subtraction = '-';
     char Multiplication = '*';
     char Division = '/';
+    char Equal = '0';
     char function;
+    private SoundPool soundPool;
+    private int fartSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,47 +127,66 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                value1 = Double.parseDouble(editor.getText() + "");
+                value1 = Double.parseDouble(editor.getText() + "+");
                 calculate();
-                Addition = function;
+                function = Addition;
                 editor.setText(null);
             }
         });
         subtract.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                value1 = Double.parseDouble(editor.getText() + "");
+                value1 = Double.parseDouble(editor.getText() + "-");
                 calculate();
-                Subtraction = function;
+                function = Subtraction;
                 editor.setText(null);
             }
         });
         multiply.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                value1 = Double.parseDouble(editor.getText() + "");
+                value1 = Double.parseDouble(editor.getText() + "*");
                 calculate();
-                Multiplication = function;
+                function = Multiplication;
                 editor.setText(null);
             }
         });
         divide.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                value1 = Double.parseDouble(editor.getText() + "");
+                value1 = Double.parseDouble(editor.getText() + "/");
                 calculate();
-                Division = function;
+                function = Division;
                 editor.setText(null);
             }
         });
         equal.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                calculate();
+                function = Equal;
+                result.setText(result.getText().toString() + String.valueOf(value2) + "=" + String.valueOf(value1));
 
             }
         }));
         //NEED CLEAR AND EQUAL BUTTON
 
+
+        //Using SoundPool to implement sounds
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes().Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(6)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+        fartSound = soundPool.load(this, R.raw.fart, 1);
 
 
 
