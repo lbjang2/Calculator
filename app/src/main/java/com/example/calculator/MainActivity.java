@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button num0, num1, num2, num3, num4, num5, num6, num7,
-            num8, num9, add, subtract, divide, multiply, decimal, clear, equal;
+            num8, num9, add, subtract, divide, multiply, decimal, comma, clear, equal;
     EditText editor;
     private double value1 = Double.NaN;
     private double value2;
@@ -31,24 +31,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        num0 = (Button) findViewById(R.id.num0);
-        num1 = (Button) findViewById(R.id.num1);
-        num2 = (Button) findViewById(R.id.num2);
-        num3 = (Button) findViewById(R.id.num3);
-        num4 = (Button) findViewById(R.id.num4);
-        num5 = (Button) findViewById(R.id.num5);
-        num6 = (Button) findViewById(R.id.num6);
-        num7 = (Button) findViewById(R.id.num7);
-        num8 = (Button) findViewById(R.id.num8);
-        num9 = (Button) findViewById(R.id.num9);
-        add = (Button) findViewById(R.id.add);
-        subtract = (Button) findViewById(R.id.subtract);
-        divide = (Button) findViewById(R.id.divide);
-        multiply = (Button) findViewById(R.id.multiply);
-        decimal = (Button) findViewById(R.id.decimal);
-        clear = (Button) findViewById(R.id.clear);
-        equal = (Button) findViewById(R.id.equal);
-        editor = (TextView) findViewById(R.id.editor);
+        num0 = findViewById(R.id.num0);
+        num1 = findViewById(R.id.num1);
+        num2 = findViewById(R.id.num2);
+        num3 = findViewById(R.id.num3);
+        num4 = findViewById(R.id.num4);
+        num5 = findViewById(R.id.num5);
+        num6 = findViewById(R.id.num6);
+        num7 = findViewById(R.id.num7);
+        num8 = findViewById(R.id.num8);
+        num9 = findViewById(R.id.num9);
+        add = findViewById(R.id.add);
+        subtract = findViewById(R.id.subtract);
+        divide = findViewById(R.id.divide);
+        multiply = findViewById(R.id.multiply);
+        decimal = findViewById(R.id.decimal);
+        comma = findViewById(R.id.comma);
+        clear = findViewById(R.id.clear);
+        equal = findViewById(R.id.equal);
+        editor = findViewById(R.id.editor);
         //idk. what is textview vs edittext wtf
 
 
@@ -112,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
                 editor.setText(editor.getText() + ".");
             }
         });
+        comma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.setText(editor.getText() + ",");
+            }
+        });
         num0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.setText(editor.getText() + "");
             }
         });
-        add.setOnClickListener(new View.OnClickListener(){
+        /*add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 value1 = Double.parseDouble(editor.getText() + "+");
@@ -165,15 +172,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 calculate();
                 function = Equal;
-                result.setText(result.getText().toString() + String.valueOf(value2) + "=" + String.valueOf(value1));
+                //result.setText(result.getText().toString() + String.valueOf(value2) + "=" + String.valueOf(value1));
 
             }
         }));
         //NEED CLEAR AND EQUAL BUTTON
-
+*/
 
         //Using SoundPool to implement sounds
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes().Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
                     .setContentType(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
@@ -188,24 +195,40 @@ public class MainActivity extends AppCompatActivity {
         }
         fartSound = soundPool.load(this, R.raw.fart, 1);
 
+         */
+
 
 
     }
-    public double calculate() {
-        if (!Double.isNaN(value1)) {
-            if (function == Addition) {
-                return value1 + value2;
-            }
-            if (function == Subtraction) {
-                return value1 - value2;
-            }
-            if (function == Multiplication) {
-                return value1 * value2;
-            }
-            if (function == Division) {
-                return value1 / value2;
-            }
+    public void mean(double[] array) {
+        double mean = findMean(array);
+    }
+    public double findMean(double[] array) {
+        double mean = 0;
+        double sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += i;
+            mean = sum / (array.length - 1);
         }
-        return 0;
+        return mean;
     }
+    public double findVariance(double[] array) {
+        double mean = findMean(array);
+        double sum = 0;
+        double[] deviance = new double[array.length];
+        for (int j = 0; j < array.length; j++) {
+            deviance[j] = array[j] - mean;
+            deviance[j] *= deviance[j];
+            sum += deviance[j];
+        }
+        return sum / array.length;
+    }
+    public void stdev(double[] array) {
+        double variance = findVariance(array);
+        double stdev = Math.sqrt(variance);
+    }
+    public void vAriance(double[] array) {
+        double variance = findVariance(array);
+    }
+
 }
