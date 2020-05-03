@@ -8,161 +8,211 @@
 
     <EditText
         android:id="@+id/editor"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="62dp" />
+        android:layout_marginTop="62dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/num1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
         android:text="1"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="258dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/num2"
+        app:layout_constraintEnd_toStartOf="@+id/num2"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/num2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
         android:text="2"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="258dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/num3"
+        app:layout_constraintEnd_toStartOf="@+id/num3"
+        app:layout_constraintStart_toEndOf="@+id/num1" />
 
     <Button
         android:id="@+id/num3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="3"
-        tools:layout_editor_absoluteX="215dp"
-        tools:layout_editor_absoluteY="258dp" />
+        app:layout_constraintEnd_toStartOf="@+id/mean"
+        app:layout_constraintStart_toEndOf="@+id/num2"
+        app:layout_constraintTop_toBottomOf="@+id/clear" />
 
     <Button
         android:id="@+id/num4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
         android:text="4"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="317dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/num5"
+        app:layout_constraintEnd_toStartOf="@+id/num5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/num5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="317dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/num6"
+        app:layout_constraintEnd_toStartOf="@+id/num6"
+        app:layout_constraintStart_toEndOf="@+id/num4" />
 
     <Button
         android:id="@+id/num6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
         android:text="6"
-        tools:layout_editor_absoluteX="213dp"
-        tools:layout_editor_absoluteY="317dp" />
+        app:layout_constraintEnd_toStartOf="@+id/var"
+        app:layout_constraintStart_toEndOf="@+id/num5"
+        app:layout_constraintTop_toBottomOf="@+id/num3" />
 
     <Button
         android:id="@+id/num7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:text="7"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="381dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/num8"
+        app:layout_constraintEnd_toStartOf="@+id/num8"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/num8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
         android:text="8"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="381dp" />
+        app:layout_constraintEnd_toStartOf="@+id/num9"
+        app:layout_constraintStart_toEndOf="@+id/num7"
+        app:layout_constraintTop_toBottomOf="@+id/num5" />
 
     <Button
         android:id="@+id/num9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:text="9"
-        tools:layout_editor_absoluteX="215dp"
-        tools:layout_editor_absoluteY="381dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="137dp" />
-
+        app:layout_constraintBaseline_toBaselineOf="@+id/num8"
+        app:layout_constraintEnd_toStartOf="@+id/sdev"
+        app:layout_constraintStart_toEndOf="@+id/num8" />
 
 
     <Button
         android:id="@+id/num0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
         android:text="0"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintEnd_toStartOf="@+id/equal"
+        app:layout_constraintStart_toEndOf="@+id/decimal"
+        app:layout_constraintTop_toBottomOf="@+id/num8" />
 
     <Button
         android:id="@+id/decimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:text="."
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/num0"
+        app:layout_constraintEnd_toStartOf="@+id/num0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/equal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:text="="
-        tools:layout_editor_absoluteX="215dp"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/num0"
+        app:layout_constraintEnd_toStartOf="@+id/med"
+        app:layout_constraintStart_toEndOf="@+id/num0" />
 
     <Button
-        android:id="@+id/add"
+        android:id="@+id/mean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
-        tools:layout_editor_absoluteX="310dp"
-        tools:layout_editor_absoluteY="258dp" />
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:text="x̅"
+        app:layout_constraintBaseline_toBaselineOf="@+id/num3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/num3" />
 
     <Button
-        android:id="@+id/subtract"
+        android:id="@+id/var"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-"
-        tools:layout_editor_absoluteX="310dp"
-        tools:layout_editor_absoluteY="317dp" />
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:text="VAR"
+        app:layout_constraintBaseline_toBaselineOf="@+id/num6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/num6" />
 
     <Button
-        android:id="@+id/multiply"
+        android:id="@+id/sdev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="*"
-        tools:layout_editor_absoluteX="315dp"
-        tools:layout_editor_absoluteY="381dp" />
+        android:text="SD"
+        app:layout_constraintBaseline_toBaselineOf="@+id/num9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/num9" />
 
     <Button
-        android:id="@+id/divide"
+        android:id="@+id/med"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="/"
-        tools:layout_editor_absoluteX="315dp"
-        tools:layout_editor_absoluteY="445dp" />
+        android:text="Median"
+        app:layout_constraintBaseline_toBaselineOf="@+id/equal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/equal" />
 
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:text="clear"
-        tools:layout_editor_absoluteX="308dp"
-        tools:layout_editor_absoluteY="200dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/comma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="20dp"
         android:text=","
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="513dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/decimal" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,9 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button num0, num1, num2, num3, num4, num5, num6, num7,
-            num8, num9, add, subtract, divide, multiply, decimal, comma, clear, equal;
+            num8, num9, mean, variance, stdev, median, decimal, comma, clear, equal;
     EditText editor;
-    private double value1 = Double.NaN;
+    private double population;
     private double value2;
     char Addition = '+';
     char Subtraction = '-';
@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         num7 = findViewById(R.id.num7);
         num8 = findViewById(R.id.num8);
         num9 = findViewById(R.id.num9);
-        add = findViewById(R.id.add);
-        subtract = findViewById(R.id.subtract);
-        divide = findViewById(R.id.divide);
-        multiply = findViewById(R.id.multiply);
+        mean = findViewById(R.id.mean);
+        variance = findViewById(R.id.var);
+        stdev = findViewById(R.id.sdev);
+        median = findViewById(R.id.med);
         decimal = findViewById(R.id.decimal);
         comma = findViewById(R.id.comma);
         clear = findViewById(R.id.clear);
@@ -131,10 +131,11 @@ public class MainActivity extends AppCompatActivity {
                 editor.setText(editor.getText() + "");
             }
         });
-        /*add.setOnClickListener(new View.OnClickListener(){
+
+        mean.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                value1 = Double.parseDouble(editor.getText() + "+");
+                population = Double.parseDouble(editor.getText());
                 calculate();
                 function = Addition;
                 editor.setText(null);
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
         //NEED CLEAR AND EQUAL BUTTON
-*/
+
 
         //Using SoundPool to implement sounds
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -227,8 +228,11 @@ public class MainActivity extends AppCompatActivity {
         double variance = findVariance(array);
         double stdev = Math.sqrt(variance);
     }
-    public void vAriance(double[] array) {
+    public void variance(double[] array) {
         double variance = findVariance(array);
+    }
+    public void updateText(double result) {
+
     }
 
 }
