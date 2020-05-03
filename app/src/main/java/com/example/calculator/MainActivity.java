@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
     Button num0, num1, num2, num3, num4, num5, num6, num7,
             num8, num9, mean, variance, stdev, median, decimal, comma, clear, equal;
@@ -135,45 +137,35 @@ public class MainActivity extends AppCompatActivity {
         mean.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                population = Double.parseDouble(editor.getText());
-                calculate();
-                function = Addition;
+                 = Double.parseDouble(editor.getText());
                 editor.setText(null);
             }
         });
-        subtract.setOnClickListener(new View.OnClickListener(){
+        median.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                value1 = Double.parseDouble(editor.getText() + "-");
-                calculate();
+                 = Double.parseDouble(editor.getText() + "-");
                 function = Subtraction;
                 editor.setText(null);
             }
         });
-        multiply.setOnClickListener(new View.OnClickListener(){
+        stdev.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                value1 = Double.parseDouble(editor.getText() + "*");
-                calculate();
-                function = Multiplication;
+                = Double.parseDouble(editor.getText() + "*");
                 editor.setText(null);
             }
         });
-        divide.setOnClickListener(new View.OnClickListener(){
+        variance.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                value1 = Double.parseDouble(editor.getText() + "/");
-                calculate();
-                function = Division;
+                = Double.parseDouble(editor.getText() + "/");
                 editor.setText(null);
             }
         });
         equal.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculate();
-                function = Equal;
-                //result.setText(result.getText().toString() + String.valueOf(value2) + "=" + String.valueOf(value1));
 
             }
         }));
@@ -197,8 +189,6 @@ public class MainActivity extends AppCompatActivity {
         fartSound = soundPool.load(this, R.raw.fart, 1);
 
          */
-
-
 
     }
     public void mean(double[] array) {
@@ -231,8 +221,18 @@ public class MainActivity extends AppCompatActivity {
     public void variance(double[] array) {
         double variance = findVariance(array);
     }
+    public void median(double[] array) {
+        double med = 0;
+        Arrays.sort(array);
+        if (array.length % 2 == 1) {
+            med = array[array.length / 2 + 1];
+        } else {
+            med = array[(array.length / 2 + (array.length / 2 + 1)) / 2];
+        }
+    }
     public void updateText(double result) {
 
     }
+
 
 }
