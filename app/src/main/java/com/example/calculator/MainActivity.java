@@ -20,12 +20,6 @@ public class MainActivity extends AppCompatActivity {
     EditText editor;
     private double population;
     private double value2;
-    char Addition = '+';
-    char Subtraction = '-';
-    char Multiplication = '*';
-    char Division = '/';
-    char Equal = '0';
-    char function;
     private SoundPool soundPool;
     private int fartSound;
 
@@ -58,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 editor.setText(editor.getText() + "1");
+                soundPool.play(fartSound, 1, 1, 0, 0, 1);
             }
         });
         num2.setOnClickListener(new View.OnClickListener() {
@@ -164,9 +159,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Using SoundPool to implement sounds
-        /*
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            AudioAttributes audioAttributes = new AudioAttributes().Builder()
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
                     .setContentType(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
                     .build();
@@ -180,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
         }
         fartSound = soundPool.load(this, R.raw.fart, 1);
 
-         */
 
     }
     public double[] buttonArray() {
