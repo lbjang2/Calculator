@@ -191,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
          * Using SoundPool to implement sounds. Initially it checks the version of Android in which the application is running on
          * It then establishes the sound attributes using the AudioAttributes class
          * We then set attributes to our SoundPool object for it to build/handle the usage of sound effects
+         * Tutorial/Documentation on using SoundPool: https://developer.android.com/reference/android/media/SoundPool
          */
 
 
