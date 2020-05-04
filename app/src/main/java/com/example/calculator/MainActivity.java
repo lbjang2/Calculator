@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     Button num0, num1, num2, num3, num4, num5, num6, num7,
-            num8, num9, mean, variance, stdev, median, decimal, comma, clear, equal;
+            num8, num9, mean, variance, stdev, median, decimal, comma, clear;
     EditText editor;
     private double population;
     private double value2;
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         decimal = findViewById(R.id.decimal);
         comma = findViewById(R.id.comma);
         clear = findViewById(R.id.clear);
-        equal = findViewById(R.id.equal);
         editor = findViewById(R.id.editor);
         //idk. what is textview vs edittext wtf
 
@@ -137,38 +136,39 @@ public class MainActivity extends AppCompatActivity {
         mean.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                 = Double.parseDouble(editor.getText());
-                editor.setText(null);
+                editor.setText(Double.toString(mean(buttonArray())));
             }
         });
         median.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                 = Double.parseDouble(editor.getText() + "-");
-                function = Subtraction;
-                editor.setText(null);
+                editor.setText(Double.toString(median(buttonArray())));
             }
         });
         stdev.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                = Double.parseDouble(editor.getText() + "*");
-                editor.setText(null);
+                editor.setText(Double.toString(stdev(buttonArray())));
             }
         });
         variance.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                = Double.parseDouble(editor.getText() + "/");
-                editor.setText(null);
+                editor.setText(Double.toString(variance(buttonArray())));
             }
         });
-        equal.setOnClickListener((new View.OnClickListener() {
+        clear.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                editor.setText("");
+            }
+        });
+       /* equal.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
-        }));
+        })); */
         //NEED CLEAR AND EQUAL BUTTON
 
 
@@ -191,20 +191,25 @@ public class MainActivity extends AppCompatActivity {
          */
 
     }
-    public void mean(double[] array) {
-        double mean = findMean(array);
+    public double[] buttonArray() {
+        String stringData = editor.getText().toString();
+        String[] splitData = stringData.split(",");
+        double[] data = new double[splitData.length];
+        for (int i = 0; i < splitData.length; i++) {
+            data[i] = Double.parseDouble(splitData[i]);
+        }
+        return data;
     }
-    public double findMean(double[] array) {
-        double mean = 0;
+
+    public double mean(double[] array) {
         double sum = 0;
         for (int i = 0; i < array.length; i++) {
-            sum += i;
-            mean = sum / (array.length - 1);
+            sum += array[i];
         }
-        return mean;
+        return sum / (array.length);
     }
     public double findVariance(double[] array) {
-        double mean = findMean(array);
+        double mean = mean(array);
         double sum = 0;
         double[] deviance = new double[array.length];
         for (int j = 0; j < array.length; j++) {
@@ -214,25 +219,21 @@ public class MainActivity extends AppCompatActivity {
         }
         return sum / array.length;
     }
-    public void stdev(double[] array) {
+    public double stdev(double[] array) {
         double variance = findVariance(array);
-        double stdev = Math.sqrt(variance);
+        return Math.sqrt(variance);
     }
-    public void variance(double[] array) {
-        double variance = findVariance(array);
+    public double variance(double[] array) {
+        return findVariance(array);
     }
-    public void median(double[] array) {
+    public double median(double[] array) {
         double med = 0;
         Arrays.sort(array);
         if (array.length % 2 == 1) {
-            med = array[array.length / 2 + 1];
+            med = array[array.length / 2];
         } else {
-            med = array[(array.length / 2 + (array.length / 2 + 1)) / 2];
+            med = (array[(array.length / 2)] + array[(array.length - 1) / 2]) / 2;
         }
+        return med;
     }
-    public void updateText(double result) {
-
-    }
-
-
 }
