@@ -163,17 +163,9 @@ public class MainActivity extends AppCompatActivity {
                 editor.setText("");
             }
         });
-       /* equal.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        })); */
-        //NEED CLEAR AND EQUAL BUTTON
-
-
         //Using SoundPool to implement sounds
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        /*
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes().Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
                     .setContentType(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
